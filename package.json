@@ -1,0 +1,24 @@
+{
+  "name": "demo_app",
+  "version": "1.0.0",
+  "description": "Demo ci/cd application",
+  "main": "index.js",
+  "scripts": {
+    "start":"node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/namratapandule/demo_app.git"
+  },
+  "author": "Namratapandule",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/namratapandule/demo_app/issues"
+  },
+  "homepage": "https://github.com/namratapandule/demo_app#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1"
+  }
+}
