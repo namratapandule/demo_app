@@ -15,15 +15,17 @@ pipeline {
      
     stage('Build') {
       steps {
+
+        dir('code'){
         sh 'npm install'
-         
+        }
       }
     }  
     
             
-    stage('Test') {
+    stage('deploy') {
       steps {
-        sh 'node test'
+       sshpublisher(publishers: [sshpublisherDesc(configName: '',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternsaperator: '[,]+, remoteDirectory: '', remoteDirectorySDF: false, removeprefix: 'dist/',sourceFiles: 'dist/Lending-PORTAL/**/*')],usePromotionTimestamp: false, useWorkspaceInPramotion: false, verbose: true)]) 
       }
     }
   }
