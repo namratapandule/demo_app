@@ -1,14 +1,15 @@
 pipeline {
   agent any
     
-  tools {nodejs "nodejs"}
+  tools nodejs "nodejs"
   
     
   stages {
         
-    stage('Git') {
+    stage('code checkout') {
       steps {
-        git 'https://namratapandule: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@github.com/namratapandule/demo_app.git'
+        checkout([$class: 'GitSCM',branches: [[name: '*/main']],doGenerateSubmoduleConfiguration: false,extensions: [],submoduleCfg: [],userRemoteConfigs: 
+        [[credentialsId:'git_cred',url:"https://namratapandule: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@github.com/namratapandule/demo_app.git"]]])
       }
     }
      
