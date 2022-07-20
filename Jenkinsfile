@@ -23,7 +23,7 @@ pipeline {
             
     stage('deploy') {
       steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd /home/ec2-user', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'cd /home/ec2-user', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*.json')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'apt-get update', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'cd /home/ec2-user', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*.json')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
   }
