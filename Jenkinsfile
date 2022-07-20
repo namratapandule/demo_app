@@ -16,16 +16,14 @@ pipeline {
     stage('Build') {
       steps {
 
-        dir('code'){
         sh 'npm install'
-        }
       }
     }  
     
             
     stage('deploy') {
       steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'cd /home/ec2-user', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'cd /home/ec2-user && npm run start', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'cd /home/ec2-user', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '.')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
   }
