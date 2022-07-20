@@ -25,7 +25,7 @@ pipeline {
             
     stage('deploy') {
       steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'cd /home/ec2-user', remoteDirectorySDF: false, removePrefix: '',sourceFiles: 'code/**/*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'cd /home/ec2-user', remoteDirectorySDF: false, removePrefix: '',sourceFiles: 'code')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
   }
