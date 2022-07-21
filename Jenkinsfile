@@ -15,14 +15,14 @@ pipeline {
     }
     }
 
-    stage('build script checkout') {
-      steps {
-        dir('buildscripts'){
-        checkout([$class: 'GitSCM',branches: [[name: '*/master']],doGenerateSubmoduleConfiguration: false,extensions: [],submoduleCfg: [],userRemoteConfigs: 
-        [[credentialsId:'git_cred',url:"https://namratapandule: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@github.com/namratapandule/buildscripts.git"]]])
-      }
-    }
-    }
+    //stage('build script checkout') {
+      //steps {
+        //dir('buildscripts'){
+        //checkout([$class: 'GitSCM',branches: [[name: '*/master']],doGenerateSubmoduleConfiguration: false,extensions: [],submoduleCfg: [],userRemoteConfigs: 
+        //[[credentialsId:'git_cred',url:"https://namratapandule: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@github.com/namratapandule/buildscripts.git"]]])
+      //}
+    //}
+    //}
      
     /**stage('Build') {
       steps {
@@ -38,11 +38,11 @@ pipeline {
        sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: "node/api/code", remoteDirectorySDF: false, removePrefix: 'code',sourceFiles: 'code/*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
-  stage('copy buildscripts') {
-      steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'node/api', remoteDirectorySDF: false, removePrefix: 'buildscripts/node/api',sourceFiles: "buildscripts/node/api/**/*")],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
-      }
-    }
+  //stage('copy buildscripts') {
+      //steps {
+       //sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'node/api', remoteDirectorySDF: false, removePrefix: '',sourceFiles: "buildscripts/node/api/**/*")],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+      //}
+//}
 
     stage('Prepare build'){
 
