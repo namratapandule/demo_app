@@ -11,6 +11,25 @@ var router = express.Router();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get("/", (req, res) => {
+  res.send("Hello Geeks !");
+});
+  
+app.get("/new", (req, res) => {
+  res.send("welcome to new page");
+});
+  
+// All the general routes of your
+// web app are defined above the
+// default route
+  
+// Default route
+app.get("*", (req, res) => {
+  
+  // Here user can also design an
+  // error page and render it 
+  res.send("PAGE NOT FOUND");
+});
 // Error handling
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "https://www.bangarbus.com");
