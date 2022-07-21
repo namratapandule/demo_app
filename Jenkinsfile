@@ -35,7 +35,7 @@ pipeline {
             
     stage('copy code') {
       steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: "node/api/code", remoteDirectorySDF: false, removePrefix: 'code',sourceFiles: 'code/**/*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: "node/api/code", remoteDirectorySDF: false, removePrefix: 'code',sourceFiles: 'code/*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
   stage('copy buildscripts') {
