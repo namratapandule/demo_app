@@ -35,12 +35,12 @@ pipeline {
             
     stage('copy code') {
       steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: "node/api/code", remoteDirectorySDF: false, removePrefix: 'code',sourceFiles: 'code/**/*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
   stage('copy buildscripts') {
       steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "cd node/api/ && build.sh", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'node/api', remoteDirectorySDF: false, removePrefix: 'buildscripts/node/api',sourceFiles: "buildscripts/node/api/**/*")],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
 
@@ -53,7 +53,7 @@ pipeline {
   stage('deploy build'){
 
     steps {
-       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "cd node/api && sh deploy.sh", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'node/api', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
 
