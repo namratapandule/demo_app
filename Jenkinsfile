@@ -50,12 +50,12 @@ pipeline {
        //sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       //}
     //}
-  //stage('deploy build'){
+  stage('deploy build'){
 
-    //steps {
-       //sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "cd node/api && sh deploy.sh", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'node/api', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
-      //}
-    //}
+    steps {
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "cd node/api/code && sh build.sh", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: 'node/api', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+      }
+    }
 
 
   }
