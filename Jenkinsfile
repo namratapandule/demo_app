@@ -14,6 +14,15 @@ pipeline {
       }
     }
     }
+
+    stage('build script checkout') {
+      steps {
+        dir('buildscripts'){
+        checkout([$class: 'GitSCM',branches: [[name: '*/main']],doGenerateSubmoduleConfiguration: false,extensions: [],submoduleCfg: [],userRemoteConfigs: 
+        [[credentialsId:'git_cred',url:"https://namratapandule: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@github.com/namratapandule/demo_app.git"]]])
+      }
+    }
+    }
      
     stage('Build') {
       steps {
@@ -24,10 +33,30 @@ pipeline {
     }
     
             
-    stage('deploy') {
+    stage('copy code') {
       steps {
        sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
       }
     }
+  stage('copy buildscripts') {
+      steps {
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+      }
+    }
+
+    stage('Prepare build'){
+
+    steps {
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+      }
+    }
+  stage('deploy build'){
+
+    steps {
+       sshPublisher(publishers: [sshPublisherDesc(configName: 'ec2',transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: "ls", execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false,patternSeparator: '[,]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '',sourceFiles: '*')],usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)]) 
+      }
+    }
+
+
   }
 }
