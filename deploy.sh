@@ -8,3 +8,5 @@ docker stop "$con_id"
 docker rm nodeapi
 
 docker run -p 3000:5000 -d --name nodeapi nodeapi/node:$VERSION
+
+fi
