@@ -8,6 +8,7 @@ COPY ["package.json", "package-lock.json*", "server.js", "./"]
 
 RUN npm install --production
 
+# Bundle app source
 COPY . .
 
 CMD [ "node", "server.js" ]
