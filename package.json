@@ -1,6 +1,6 @@
 {
   "name": "demo_app",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Demo ci/cd application",
   "main": "index.js",
   "scripts": {
