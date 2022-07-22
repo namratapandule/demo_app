@@ -20,6 +20,4 @@ docker build -t nodeapi/node:$version . && \
 
 echo $version > .version
 
-docker rm nodeapi && \
-
 fi
