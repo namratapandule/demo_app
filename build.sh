@@ -18,8 +18,8 @@ then
 
 docker build -t nodeapi/node:$version . && \
 
-docker rm nodeapi && \
-
 echo $version > .version
+
+docker rm nodeapi && \
 
 fi
