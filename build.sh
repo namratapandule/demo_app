@@ -16,9 +16,9 @@ if [ "$pre_version" != "$version" ]
 
 then
 
-docker build -t nodeapi/node:$version . ## && \
+docker build -t nodeapi/node:$version . && \
 
-##docker rmi nodeapi/node:$version && \
+docker rm nodeapi && \
 
 echo $version > .version
 
