@@ -11,4 +11,4 @@ RUN npm install --production
 # Bundle app source
 COPY . .
 
-CMD [ "node", "server.js" ]
+ENTRYPOINT [ "node", "server.js" ]
