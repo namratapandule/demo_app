@@ -12,3 +12,11 @@ RUN npm install --production
 COPY . .
 
 ENTRYPOINT [ "node", "server.js" ]
+
+
+
+
+#FROM node  
+#WORKDIR /root/
+#COPY --from=builder /app/ ./
+#ENTRYPOINT [ "node", "server.js" ]
