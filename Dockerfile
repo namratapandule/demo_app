@@ -18,5 +18,5 @@ ENTRYPOINT [ "node", "server.js" ]
 
 #FROM node  
 #WORKDIR /root/
-#COPY --from=builder /app/ ./
+#COPY --from=builder /app ./
 #ENTRYPOINT [ "node", "server.js" ]
